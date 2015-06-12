@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				".gitignore",
+				"LICENSE",
+				"*.pyc",
+				"*.tmp",
+				"*.log"
+			],
+			"follow_symlinks": true,
+			"path": "."
+		}
+	]
+}
