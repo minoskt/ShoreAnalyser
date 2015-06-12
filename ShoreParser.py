@@ -7,7 +7,7 @@ import re
 from datetime import datetime
 
 
-def parsefile(inputFile, start_date):
+def parsefile(inputFile, start_date=None):
     '''Parse a complete file and return as a list
        of dictionaries '''
 
@@ -33,7 +33,7 @@ def parsefile(inputFile, start_date):
     return shoreList
 
 
-def parseline(line, start_date):
+def parseline(line, start_date=None):
     '''Parse the line and return in dictionary'''
 
     # use ', ' as a separator
@@ -73,8 +73,16 @@ def parseline(line, start_date):
             # parse it as a date value
             value = _parsedate(value)
 
-            # find the deltatime
-            deltatime = value - start_date
+            # if a start_date is provided
+            if start_date:
+
+                # find the deltatime
+                deltatime = value - start_date
+
+            else:
+
+                # just provide the original date
+                deltatime = value
 
             # also add the DeltaTime to the dictionary
             dictionary["DeltaTime"] = _parsetime(str(deltatime))
