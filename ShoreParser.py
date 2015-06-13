@@ -62,7 +62,7 @@ def parseline(line, start_date=None):
             if value:
                 value = float(value)
 
-        elif (key in ['Id', 'Frame', 'Roll', 'Yaw']):
+        elif (key in ['Id', 'Frame', 'Roll', 'Yaw', 'Pitch']):
 
             # int value
             if value:
@@ -86,11 +86,6 @@ def parseline(line, start_date=None):
 
             # also add the DeltaTime to the dictionary
             dictionary["DeltaTime"] = _parsetime(str(deltatime))
-
-        else:
-
-            # Key is not supported.
-            print "Warning: Unknown key '%s'." % (key)
 
         # add to the dictionary
         dictionary[key] = value
