@@ -113,9 +113,12 @@ def _parsetime(time):
     if len(time) <= 8:
         # Datetime format: '16:32:46'
         value = datetime.strptime(time, '%H:%M:%S')
-    else:
+    elif len(time) <= 15:
         # Datetime format: '16:32:46.396849'
         value = datetime.strptime(time, '%H:%M:%S.%f')
+    else:
+        # Datetime format: '2013-06-12 13:24:30.310070'
+        value = datetime.strptime(time, '%Y-%m-%d %H:%M:%S.%f')
 
         return value
 
