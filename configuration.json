@@ -1,0 +1,30 @@
+{
+    "inputs": [
+        {
+            "id": "1",
+            "filename": "inputfile.log",
+            "start_date": "2015-Jun-17 13:24:30.310070",
+            "start_frame": 7,
+            "output_log": "audience.log",
+            "filters": [
+                {
+                    "max_people": 99
+                }
+            ]
+        }
+    ],
+    "configurations": [
+        {
+            "output": "output_avg.csv",
+            "time_ranges": [
+                {
+                    "id": "Audience_1",
+                    "inputId": "1",
+                    "from": "00:00:00.000",
+                    "to": "01:01:00.000",
+                    "label": "ALL"
+                }
+            ]
+        }
+    ]
+}
