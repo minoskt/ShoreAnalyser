@@ -99,7 +99,7 @@ class ShoreAnalyser:
 
             print "Exporting log file '%s'." % (output_log)
 
-            with open("output_log", "w") as logfile:
+            with open(output_log, "w") as logfile:
                 logfile.write(statistics)
 
         # return the audience
