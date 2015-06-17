@@ -600,8 +600,8 @@ class Person:
         midXframe, midYframe = frame.center()
 
         # Optimal value for Person classification
-        return (abs(midX - midXframe) < 100 and
-                abs(midY - midYframe) < 50)
+        return (abs(midX - midXframe) < 80 and
+                abs(midY - midYframe) < 30)
 
 
     def surprised(self, fromIndex, toIndex):
