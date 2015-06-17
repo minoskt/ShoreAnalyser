@@ -120,7 +120,7 @@ def _parsetime(time):
         # Datetime format: '2013-06-12 13:24:30.310070'
         value = datetime.strptime(time, '%Y-%m-%d %H:%M:%S.%f')
 
-        return value
+    return value
 
 
 def _parseitem(item):
