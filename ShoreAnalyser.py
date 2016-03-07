@@ -199,7 +199,7 @@ class ShoreAnalyser:
 
         # Person, TimeFrom, TimeTo, Happy, Sad, Angry, Surprise,
         # MouthOpen, Night, ID
-        output.write("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s %s, %s, %s\n" %
+        output.write("%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s\n" %
                      (person,
                       timeFrom.strftime("%H:%M:%S.%f"),
                       timeTo.strftime("%H:%M:%S.%f"),
