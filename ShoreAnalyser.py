@@ -46,7 +46,7 @@ class ShoreAnalyser:
 
                 # calculate the correct date based on the starting frame
                 start_frame = conf_input["start_frame"]
-                delta = timedelta(milliseconds=start_frame * 1000 / 25)
+                delta = timedelta(milliseconds=start_frame * 1000 / 29.97)
                 correct_date = start_date - delta
 
                  # print the date
@@ -279,8 +279,10 @@ class Audience:
         frame = Frame(shoreDict['Left'], shoreDict['Top'],
                       shoreDict['Right'], shoreDict['Bottom'])
 
+        shore_id = shoreDict['Id']
+
         # check if that person exists on the list
-        person = self._personExists(frame)
+        person = self._personExists(shore_id, frame)
 
         # if not
         if person is None:
@@ -297,18 +299,18 @@ class Audience:
         else:
             # just update it
             person.update(frame, shoreDict)
-            x, y = frame.center()
+            #x, y = frame.center()
             #print "x:" + str(x) + " y:" + str(y)
 
 
-    def _personExists(self, frame):
+    def _personExists(self, shore_id, frame):
         ''' check if that person exists in the list '''
 
         # iterate through people list
         for person in self._people:
 
             # if a person exists
-            if (person.isCloseTo(frame)):
+            if shore_id == person.shore_id or person.isCloseTo(frame):
                 return person
 
         return None
@@ -456,6 +458,12 @@ class Person:
         # init the identified
         self.identified = 0
 
+        # init frame
+        self.frame = None
+
+        # init SHORE id
+        self.shore_id = None
+
         # init list structures
         self._timestamp = []
         self._deltatime = []
@@ -482,6 +490,9 @@ class Person:
 
         # update the frame
         self.frame = frame
+
+        # update SHORE id
+        self.shore_id = shoreDict['Id']
 
         # add values to buffer lists
         self._addToBuffer(shoreDict, 'TimeStamp', self._timestamp)
@@ -600,8 +611,8 @@ class Person:
         midXframe, midYframe = frame.center()
 
         # Optimal value for Person classification
-        return (abs(midX - midXframe) < 80 and
-                abs(midY - midYframe) < 30)
+        return (abs(midX - midXframe) < 300 and
+                abs(midY - midYframe) < 200)
 
 
     def surprised(self, fromIndex, toIndex):
